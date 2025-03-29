@@ -1,0 +1,11 @@
+---
+
+all: True
+template: file://./wrappers/log.gotmpl
+force-file-write: true
+dir: "middleware"
+filename: "{{ .InterfaceName | snakecase }}_log_gen.go"
+mockname: "{{ .InterfaceName }}WithLog"
+pkgname: middleware
+packages:
+  github.com/breml/mockery-wrap-test/pkg:

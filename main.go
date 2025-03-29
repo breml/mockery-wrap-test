@@ -1,10 +1,12 @@
 //go:generate go tool github.com/vektra/mockery/v3 --config .mockery_fmt_print.yaml
 //go:generate go tool github.com/vektra/mockery/v3 --config .mockery_space.yaml
+//go:generate go tool github.com/vektra/mockery/v3 --config .mockery_log.yaml
 
 package main
 
 import (
 	"context"
+	"os"
 
 	"github.com/breml/mockery-wrap-test/middleware"
 	"github.com/breml/mockery-wrap-test/pkg"
@@ -14,6 +16,7 @@ func main() {
 	var e pkg.Exampler = pkg.Example{}
 
 	e = middleware.NewExamplerWithFmtPrint(e)
+	e = middleware.NewExamplerWithLog(e, os.Stdout, os.Stderr)
 	e = middleware.NewExamplerWithSpace(e, "\n----\n")
 
 	e.Example()
