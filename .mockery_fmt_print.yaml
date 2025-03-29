@@ -1,0 +1,11 @@
+---
+
+all: True
+template: file://./wrappers/fmt_print.gotmpl
+force-file-write: true
+dir: "middleware"
+filename: "{{ .InterfaceName | snakecase }}_fmt_print_gen.go"
+mockname: "{{ .InterfaceName }}WithFmtPrint"
+pkgname: middleware
+packages:
+  github.com/breml/mockery-wrap-test/pkg:
