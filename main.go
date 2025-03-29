@@ -1,4 +1,5 @@
 //go:generate go tool github.com/vektra/mockery/v3 --config .mockery_fmt_print.yaml
+//go:generate go tool github.com/vektra/mockery/v3 --config .mockery_space.yaml
 
 package main
 
@@ -13,6 +14,7 @@ func main() {
 	var e pkg.Exampler = pkg.Example{}
 
 	e = middleware.NewExamplerWithFmtPrint(e)
+	e = middleware.NewExamplerWithSpace(e, "\n----\n")
 
 	e.Example()
 	e.ExampleWithArgs(123, "string1")

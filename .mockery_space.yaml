@@ -1,0 +1,11 @@
+---
+
+all: True
+template: file://./wrappers/space.gotmpl
+force-file-write: true
+dir: "middleware"
+filename: "{{ .InterfaceName | snakecase }}_space_gen.go"
+mockname: "{{ .InterfaceName }}WithSpace"
+pkgname: middleware
+packages:
+  github.com/breml/mockery-wrap-test/pkg:
